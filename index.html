@@ -1,0 +1,1049 @@
+<!DOCTYPE html>
+<html lang="km" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chhoeun Sivvoeuy - Premium Multimedia Portfolio Website</title>
+    
+    <!-- Google Fonts for Khmer & Latin (Moul & Battambang) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Battambang:wght@300;400;700;900&family=Moul&family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <!-- FontAwesome for Premium Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        battambang: ['Battambang', 'sans-serif'],
+                        moul: ['Moul', 'cursive'],
+                        inter: ['Inter', 'sans-serif'],
+                    },
+                    colors: {
+                        cambodia: {
+                            gold: '#dfb15b',
+                            goldLight: '#fcf3db',
+                            goldDark: '#b58932',
+                            royalBlue: '#0a1931',
+                            navy: '#040b14',
+                            accentRed: '#bf1616',
+                            emerald: '#10b981',
+                            saffron: '#f97316'
+                        }
+                    },
+                    boxShadow: {
+                        'gold-glow': '0 0 20px -3px rgba(223, 177, 91, 0.4)',
+                        'gold-border': '0 0 0 1px rgba(223, 177, 91, 0.25)',
+                    }
+                }
+            }
+        }
+    </script>
+    
+    <style>
+        body {
+            font-family: 'Battambang', sans-serif;
+            background-color: #040b14;
+            background-image: radial-gradient(circle at 50% 0%, #0c2140 0%, #040b14 70%);
+        }
+        .moul-title {
+            font-family: 'Moul', cursive;
+            letter-spacing: 0.05em;
+            text-shadow: 2px 3px 6px rgba(0, 0, 0, 0.8), 0 0 8px rgba(223, 177, 91, 0.3);
+        }
+        /* Custom scrollbar */
+        ::-webkit-scrollbar {
+            width: 10px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #040b14;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: linear-gradient(180deg, #dfb15b, #b58932);
+            border-radius: 5px;
+            border: 2px solid #040b14;
+        }
+        /* Glassmorphism panel with gold border */
+        .glass-panel {
+            background: rgba(10, 25, 49, 0.5);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border: 1px solid rgba(223, 177, 91, 0.18);
+        }
+        /* Card animations */
+        .premium-card {
+            transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+        .premium-card:hover {
+            transform: translateY(-10px) scale(1.02);
+            box-shadow: 0 20px 40px -10px rgba(223, 177, 91, 0.35);
+            border-color: rgba(223, 177, 91, 0.6);
+        }
+        /* Beautiful Khmer Ornament Divider Line */
+        .khmer-divider {
+            height: 12px;
+            background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 12" fill="%23dfb15b"><path d="M0 6 Q 25 0, 50 6 T 100 6 Q 75 12, 50 6 T 0 6" opacity="0.6"/></svg>');
+            background-repeat: repeat-x;
+            background-size: contain;
+        }
+        @media print {
+            .no-print { display: none !important; }
+            body { background: white; color: black; background-image: none; }
+            .glass-panel { background: white; border: 1px solid #ddd; backdrop-filter: none; }
+        }
+    </style>
+</head>
+<body class="text-slate-100 min-h-screen flex flex-col justify-between selection:bg-cambodia-gold selection:text-cambodia-navy">
+
+    <!-- Ambient Audio Element for Interactive Bell Sound -->
+    <div class="hidden">
+        <svg id="sound-bell-svg" viewBox="0 0 100 100"></svg>
+    </div>
+
+    <!-- Navigation Bar -->
+    <header class="no-print sticky top-0 z-40 w-full glass-panel border-b border-cambodia-gold/20 backdrop-blur-md">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
+            <a href="#" class="flex items-center gap-3" onclick="playBellSound()">
+                <!-- Dynamic profile shield -->
+                <div class="relative w-12 h-12 rounded-xl bg-gradient-to-tr from-cambodia-gold to-cambodia-goldDark p-[1.5px] shadow-lg shadow-cambodia-gold/20 flex items-center justify-center">
+                    <div class="w-full h-full bg-cambodia-navy rounded-[10px] flex items-center justify-center font-bold text-cambodia-gold font-inter text-lg">
+                        CS
+                    </div>
+                    <div class="absolute -top-1 -right-1 w-3 h-3 bg-emerald-500 rounded-full border-2 border-cambodia-navy animate-pulse"></div>
+                </div>
+                <div>
+                    <h1 class="moul-title text-cambodia-gold text-sm tracking-wider block">ឈឿន ស៊ីវវើយ</h1>
+                    <span class="text-[10px] text-slate-400 font-inter uppercase tracking-widest block font-bold">Multimedia Portfolio</span>
+                </div>
+            </a>
+            
+            <!-- Desktop Nav Items -->
+            <nav class="hidden lg:flex items-center gap-8">
+                <a href="#hero" onclick="playClick()" class="text-xs font-bold hover:text-cambodia-gold transition-colors uppercase tracking-widest text-slate-300 flex items-center gap-1.5"><i class="fa-solid fa-house text-cambodia-gold"></i> ទំព័រដើម</a>
+                <a href="#about" onclick="playClick()" class="text-xs font-bold hover:text-cambodia-gold transition-colors uppercase tracking-widest text-slate-300 flex items-center gap-1.5"><i class="fa-solid fa-address-card text-cambodia-gold"></i> អំពីខ្ញុំ</a>
+                <a href="#portfolio" onclick="playClick()" class="text-xs font-bold hover:text-cambodia-gold transition-colors uppercase tracking-widest text-slate-300 flex items-center gap-1.5"><i class="fa-solid fa-palette text-cambodia-gold"></i> ស្នាដៃទាំងអស់</a>
+                <a href="#contact" onclick="playClick()" class="text-xs font-bold hover:text-cambodia-gold transition-colors uppercase tracking-widest text-slate-300 flex items-center gap-1.5"><i class="fa-solid fa-envelope text-cambodia-gold"></i> ទំនាក់ទំនង</a>
+            </nav>
+
+            <!-- Top Actions -->
+            <div class="flex items-center gap-2">
+                <button onclick="exportCustomizedHTML()" class="bg-gradient-to-r from-emerald-600 to-teal-600 hover:brightness-110 active:scale-95 text-white font-bold text-xs py-2.5 px-4 rounded-xl transition-all shadow-md flex items-center gap-1.5" title="រក្សាទុកការផ្លាស់ប្តូរទាំងអស់">
+                    <i class="fa-solid fa-download"></i>
+                    <span class="hidden sm:inline">រក្សាទុកវេបសាយ</span>
+                </button>
+                <button onclick="window.print()" class="bg-gradient-to-r from-cambodia-gold to-cambodia-goldDark hover:brightness-110 active:scale-95 text-cambodia-navy font-black text-xs py-2.5 px-4 rounded-xl transition-all shadow-md flex items-center gap-1.5">
+                    <i class="fa-solid fa-print"></i>
+                    <span class="hidden sm:inline">បោះពុម្ពជា PDF</span>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero / Profile Section with Traditional Frame -->
+    <section id="hero" class="relative overflow-hidden py-12 md:py-20 border-b border-cambodia-gold/20 bg-gradient-to-b from-cambodia-navy to-slate-950 px-4">
+        <!-- Floating decorative lights -->
+        <div class="absolute -right-32 -top-32 w-96 h-96 bg-cambodia-gold/10 rounded-full blur-3xl pointer-events-none"></div>
+        <div class="absolute -left-32 -bottom-32 w-96 h-96 bg-cambodia-accentRed/5 rounded-full blur-3xl pointer-events-none"></div>
+        
+        <div class="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center relative z-10">
+            
+            <!-- Left Side: Profile & Bio -->
+            <div class="lg:col-span-6 space-y-6 text-center lg:text-left">
+                <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-cambodia-gold/10 text-cambodia-gold border border-cambodia-gold/30 text-xs font-bold uppercase tracking-wider">
+                    <i class="fa-solid fa-crown text-sm animate-bounce"></i> គេហទំព័រផ្លូវការរបស់ខ្ញុំ
+                </div>
+                
+                <h1 class="moul-title text-3xl md:text-5xl text-cambodia-gold leading-relaxed md:leading-snug">
+                    កម្រងស្នាដៃ និងប្រវត្តិរូបសង្ខេប
+                </h1>
+                
+                <p class="text-slate-300 text-sm md:text-base max-w-2xl mx-auto lg:mx-0 font-light leading-relaxed">
+                    សូមស្វាគមន៍មកកាន់គេហទំព័ររចនាក្រាហ្វិក និងផ្សព្វផ្សាយពាណិជ្ជកម្មរបស់ខ្ញុំ! ខ្ញុំបាទឈ្មោះ <strong class="text-cambodia-gold font-bold">ឈឿន ស៊ីវវើយ (Chhoeun Sivvoeuy)</strong> ជាអ្នករចនាក្រាហ្វិកពហុព័ត៌មាន។ ទីនេះបង្ហាញពីកាលវិភាគនៃការរចនាទម្រង់ស្នាដៃជាច្រើនប្រភេទ រួមមាន Poster ជាតិប្រចាំខែទាំង ១២, ផ្ទាំងផ្សព្វផ្សាយម្ហូបអាហារ និងភេសជ្ជៈ ក៏ដូចជាការរចនាយីហោផលិតផលផ្សេងៗ។
+                </p>
+
+                <!-- Mini Quick Stat Row -->
+                <div class="grid grid-cols-3 gap-4 pt-4 max-w-md mx-auto lg:mx-0 text-center">
+                    <div class="p-3 rounded-2xl glass-panel">
+                        <span class="block text-xl font-bold font-inter text-cambodia-gold">12+</span>
+                        <span class="text-[10px] text-slate-400">Poster ប្រចាំខែ</span>
+                    </div>
+                    <div class="p-3 rounded-2xl glass-panel">
+                        <span class="block text-xl font-bold font-inter text-cambodia-gold">6+</span>
+                        <span class="text-[10px] text-slate-400">ម៉ឺនុយភេសជ្ជៈ/ម្ហូប</span>
+                    </div>
+                    <div class="p-3 rounded-2xl glass-panel">
+                        <span class="block text-xl font-bold font-inter text-cambodia-gold">UHD</span>
+                        <span class="text-[10px] text-slate-400">កម្រិតច្បាស់ CMYK</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Right Side: Exact BELTEI Student Profile -->
+            <div class="lg:col-span-6">
+                <div class="relative max-w-md mx-auto rounded-3xl p-1 bg-gradient-to-tr from-cambodia-gold via-cambodia-goldDark to-cambodia-gold shadow-gold-glow overflow-hidden">
+                    <div class="absolute -right-12 -top-12 w-28 h-28 bg-white/5 rounded-full blur-xl"></div>
+                    
+                    <!-- Inside Card -->
+                    <div class="bg-slate-950/95 rounded-[22px] p-5 sm:p-6 space-y-4 relative z-10 border border-slate-900">
+                        
+                        <!-- Card Header -->
+                        <div class="flex items-center justify-between pb-3 border-b border-cambodia-gold/20">
+                            <div class="flex items-center gap-2">
+                                <i class="fa-solid fa-id-card text-cambodia-gold text-lg animate-pulse"></i>
+                                <span class="text-[11px] font-bold text-slate-300 font-inter tracking-wider">STUDENT PROFILE</span>
+                            </div>
+                            <span class="text-[9px] font-mono text-cambodia-gold px-2.5 py-0.5 rounded-full bg-cambodia-gold/10 border border-cambodia-gold/25 font-bold">BELTEI ID: 00058261</span>
+                        </div>
+
+                        <!-- Profile Portrait Grid -->
+                        <div class="flex flex-col sm:flex-row items-center gap-4 pb-3 border-b border-slate-900/80">
+                            <!-- Saffron/Orange Theme Avatar -->
+                            <div class="relative w-24 h-28 rounded-xl overflow-hidden bg-gradient-to-b from-amber-500 via-orange-600 to-amber-700 border-2 border-cambodia-gold flex items-center justify-center shrink-0 shadow-lg">
+                                <div id="avatar-container" class="w-full h-full flex flex-col justify-end items-center relative">
+                                    <!-- កូដដែលត្រូវយកទៅជំនួសត្រង់បន្ទាត់ទី 208-210 -->
+                                    <img src="profile.jpg" alt="Sivvoeuy Photo" class="w-full h-full object-cover rounded-xl">
+                                   
+                                    <!-- Interactive Upload Overlay on Avatar -->
+                                    <button onclick="triggerImageSwap('avatar-main')" class="absolute inset-0 bg-black/60 opacity-0 hover:opacity-100 transition-opacity flex items-center justify-center z-30">
+                                        <i class="fa-solid fa-camera text-cambodia-gold text-sm"></i>
+                                    </button>
+                                </div>
+                            </div>
+                            
+                            <!-- Key Identifiers -->
+                            <div class="text-center sm:text-left space-y-1.5">
+                                <div class="relative inline-block">
+                                    <h2 class="moul-title text-base text-cambodia-gold">ឈឿន ស៊ីវវើយ</h2>
+                                    <div class="absolute -bottom-1 left-0 w-8 h-0.5 bg-cambodia-gold"></div>
+                                </div>
+                                <p class="text-xs text-slate-300 font-inter font-bold tracking-wider pt-1">CHHOEUN SIVVOEUY</p>
+                                <div class="flex items-center justify-center sm:justify-start gap-2 pt-0.5">
+                                    <span class="text-[9px] bg-emerald-500/10 text-emerald-400 px-2 py-0.5 rounded-md border border-emerald-500/20 font-bold"><i class="fa-solid fa-circle-check mr-1 text-[8px]"></i> ស្ថានភាព៖ Active</span>
+                                    <span class="text-[9px] bg-orange-500/10 text-orange-400 px-2 py-0.5 rounded-md border border-orange-500/20 font-bold">វេនល្ងាច / Eve3</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Detailed Credentials -->
+                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-2.5 text-[11px] pt-1">
+                            <div class="bg-slate-900/60 p-2.5 rounded-xl border border-slate-850/70">
+                                <span class="text-slate-400 block text-[9px] uppercase font-bold tracking-wider">លេខសម្គាល់ / Student ID</span>
+                                <span class="font-bold text-slate-200 font-inter text-xs">00058261</span>
+                            </div>
+                            <div class="bg-slate-900/60 p-2.5 rounded-xl border border-slate-850/70">
+                                <span class="text-slate-400 block text-[9px] uppercase font-bold tracking-wider">ភេទ / Gender</span>
+                                <span class="font-bold text-slate-200">ប្រុស (Male)</span>
+                            </div>
+                            <div class="bg-slate-900/60 p-2.5 rounded-xl border border-slate-850/70">
+                                <span class="text-slate-400 block text-[9px] uppercase font-bold tracking-wider">ថ្ងៃខែឆ្នាំកំណើត / DOB</span>
+                                <span class="font-bold text-slate-200 font-inter">12-01-2004</span>
+                            </div>
+                            <div class="bg-slate-900/60 p-2.5 rounded-xl border border-slate-850/70">
+                                <span class="text-slate-400 block text-[9px] uppercase font-bold tracking-wider">លេខទូរស័ព្ទ / Phone</span>
+                                <a href="tel:099201391" class="font-bold text-cambodia-gold hover:underline font-inter">0969656063</a>
+                            </div>
+                        </div>
+
+                        <!-- Study Enrollment Details Section -->
+                        <div class="bg-slate-900/80 p-3 rounded-xl border border-cambodia-gold/15 space-y-2">
+                            <div class="flex items-center justify-between text-[10px]">
+                                <span class="text-slate-400 font-bold"><i class="fa-solid fa-graduation-cap text-cambodia-gold mr-1"></i> ព័ត៌មានការចុះឈ្មោះសិក្សា</span>
+                                <span class="bg-cambodia-gold/20 text-cambodia-gold px-2 py-0.5 rounded-md font-bold border border-cambodia-gold/25">ឆ្នាំទី ៤ / ឆមាសទី ១</span>
+                            </div>
+                            <div class="text-[10px] space-y-1 text-slate-300">
+                                <p class="flex justify-between border-b border-slate-850 pb-1"><span class="text-slate-500">កម្រិតសិក្សា៖</span> <strong class="text-slate-200">បរិញ្ញាបត្រ (Bachelor Degree)</strong></p>
+                                <p class="flex justify-between border-b border-slate-850 pb-1"><span class="text-slate-500">ជំនាញឯកទេស៖</span> <strong class="text-cambodia-gold">រចនាពហុប្រព័ន្ធផ្សព្វផ្សាយ (Multimedia Design)</strong></p>
+                                <p class="flex justify-between border-b border-slate-850 pb-1"><span class="text-slate-500">ដេប៉ាតឺម៉ង់៖</span> <strong class="text-slate-200">ព័ត៌មានវិទ្យា និងវិទ្យាសាស្ត្រ</strong></p>
+                                <p class="flex justify-between"><span class="text-slate-500">គ្រឹះស្ថានអប់រំ៖</span> <strong class="text-slate-200">សាកលវិទ្យាល័យ ប៊ែលធី អន្តរជាតិ (ទីតាំង១)</strong></p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- Detailed Profile / About Me Section -->
+    <section id="about" class="py-16 bg-slate-950 px-4 border-b border-slate-900">
+        <div class="max-w-6xl mx-auto space-y-12">
+            
+            <div class="text-center space-y-3">
+                <span class="khmer-divider w-48 mx-auto block mb-2"></span>
+                <h2 class="moul-title text-2xl text-cambodia-gold">អំពីខ្លួនខ្ញុំ និងចក្ខុវិស័យការងារ (About Me)</h2>
+                <div class="h-0.5 w-16 bg-cambodia-gold mx-auto"></div>
+                <p class="text-xs text-slate-400 max-w-xl mx-auto font-light leading-relaxed">
+                    ខ្ញុំជាជំនាន់ក្រោយដែលស្រលាញ់ និងចង់រួមចំណែកអភិរក្ស ក៏ដូចជាផ្សព្វផ្សាយវប្បធម៌ខ្មែរ តាមរយៈការរចនាបែបបច្ចេកវិទ្យាទំនើប។
+                </p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-stretch">
+                <!-- Profile bio details -->
+                <div class="glass-panel p-8 rounded-3xl space-y-6 flex flex-col justify-between">
+                    <div class="space-y-4">
+                        <div class="flex items-center gap-3">
+                            <div class="w-10 h-10 rounded-xl bg-cambodia-gold/15 text-cambodia-gold flex items-center justify-center text-base border border-cambodia-gold/30">
+                                <i class="fa-solid fa-graduation-cap"></i>
+                            </div>
+                            <div>
+                                <h3 class="font-bold text-sm text-slate-200">ព័ត៌មានសិក្សា និងបេសកកម្ម</h3>
+                                <p class="text-[10px] text-slate-500">Academic & Vision Details</p>
+                            </div>
+                        </div>
+                        <p class="text-xs text-slate-300 leading-relaxed text-justify">
+                            ក្នុងនាមជានិស្សិតឆ្នាំទី៤ ជំនាញ **Computer Multimedia** នៃ**សាកលវិទ្យាល័យ ប៊ែលធី អន្តរជាតិ (BELTEI)** ខ្ញុំតែងតែខិតខំស្រាវជ្រាវ ស្វែងយល់ និងច្នៃប្រឌិតទម្រង់សិល្បៈ ដើម្បីបញ្ចូលភាពទាក់ទាញនៃវប្បធម៌ខ្មែរទៅកាន់វិស័យផ្សព្វផ្សាយពាណិជ្ជកម្ម។ ខ្ញុំមានគោលបំណងរៀបចំគ្រប់ប្លង់ Poster ទាំងអស់ឱ្យត្រូវតាមស្តង់ដារវិជ្ជាជីវៈ មិនថាក្នុងគោលបំណងបោះពុម្ព ឬផ្សព្វផ្សាយលើបណ្តាញសង្គមឡើយ។
+                        </p>
+                    </div>
+
+                    <div class="p-4 bg-slate-900/60 rounded-2xl border border-slate-800 text-xs text-slate-400 space-y-2">
+                        <p class="flex justify-between border-b border-slate-800/80 pb-1.5"><strong class="text-slate-300">ឈ្មោះពេញ៖</strong> <span class="font-bold text-slate-200">ឈឿន ស៊ីវវើយ</span></p>
+                        <p class="flex justify-between border-b border-slate-800/80 pb-1.5"><strong class="text-slate-300">ជំនាញ៖</strong> <span class="font-bold text-slate-200">Computer Multimedia / Graphic Designer</span></p>
+                        <p class="flex justify-between"><strong class="text-slate-300">គោលដៅ៖</strong> <span class="font-bold text-cambodia-gold">លើកកម្ពស់សិល្បៈជាតិបែបឌីជីថល</span></p>
+                    </div>
+                </div>
+
+                <!-- Technical Skills Level -->
+                <div class="glass-panel p-8 rounded-3xl space-y-6">
+                    <div class="flex items-center gap-3">
+                        <div class="w-10 h-10 rounded-xl bg-cambodia-gold/15 text-cambodia-gold flex items-center justify-center text-base border border-cambodia-gold/30">
+                            <i class="fa-solid fa-sliders"></i>
+                        </div>
+                        <div>
+                            <h3 class="font-bold text-sm text-slate-200">កម្រិតជំនាញ និងបច្ចេកទេស</h3>
+                            <p class="text-[10px] text-slate-500">Technical Expertise Levels</p>
+                        </div>
+                    </div>
+
+                    <!-- Skills bars -->
+                    <div class="space-y-4">
+                        <div class="space-y-1.5">
+                            <div class="flex justify-between text-xs font-bold">
+                                <span class="text-slate-300">Adobe Photoshop (កាត់ត និងកែពន្លឺរូបភាព)</span>
+                                <span class="text-cambodia-gold font-mono">90%</span>
+                            </div>
+                            <div class="w-full h-2 bg-slate-900 rounded-full overflow-hidden border border-slate-800">
+                                <div class="h-full bg-gradient-to-r from-cambodia-gold to-cambodia-goldDark rounded-full" style="width: 90%"></div>
+                            </div>
+                        </div>
+
+                        <div class="space-y-1.5">
+                            <div class="flex justify-between text-xs font-bold">
+                                <span class="text-slate-300">Adobe Illustrator (គូរក្បាច់ និង Logo Vector)</span>
+                                <span class="text-cambodia-gold font-mono">85%</span>
+                            </div>
+                            <div class="w-full h-2 bg-slate-900 rounded-full overflow-hidden border border-slate-800">
+                                <div class="h-full bg-gradient-to-r from-cambodia-gold to-cambodia-goldDark rounded-full" style="width: 85%"></div>
+                            </div>
+                        </div>
+
+                        <div class="space-y-1.5">
+                            <div class="flex justify-between text-xs font-bold">
+                                <span class="text-slate-300">Autodesk 3ds Max (រចនាប្លង់ 3D Booth)</span>
+                                <span class="text-cambodia-gold font-mono">75%</span>
+                            </div>
+                            <div class="w-full h-2 bg-slate-900 rounded-full overflow-hidden border border-slate-800">
+                                <div class="h-full bg-gradient-to-r from-cambodia-gold to-cambodia-goldDark rounded-full" style="width: 75%"></div>
+                            </div>
+                        </div>
+
+                        <div class="space-y-1.5">
+                            <div class="flex justify-between text-xs font-bold">
+                                <span class="text-slate-300">CMYK / RGB Printing (បច្ចេកទេសបោះពុម្ពច្បាស់)</span>
+                                <span class="text-cambodia-gold font-mono">95%</span>
+                            </div>
+                            <div class="w-full h-2 bg-slate-900 rounded-full overflow-hidden border border-slate-800">
+                                <div class="h-full bg-gradient-to-r from-cambodia-gold to-cambodia-goldDark rounded-full" style="width: 95%"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- Main Showcase Workspace -->
+    <main id="portfolio" class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+        
+        <!-- Tab Navigation Buttons -->
+        <div class="flex flex-wrap justify-center gap-3 mb-12">
+            <button onclick="switchTab('tab-months')" id="btn-tab-months" class="tab-btn px-6 py-3.5 rounded-2xl font-bold text-xs tracking-wider uppercase transition-all flex items-center gap-2 bg-cambodia-gold text-cambodia-navy shadow-lg shadow-cambodia-gold/15">
+                <i class="fa-solid fa-calendar-days text-base"></i> កម្រងស្នាដៃ ១២ ខែ (Monthly Posters)
+            </button>
+            <button onclick="switchTab('tab-food')" id="btn-tab-food" class="tab-btn px-6 py-3.5 rounded-2xl font-bold text-xs tracking-wider uppercase transition-all flex items-center gap-2 bg-slate-900 hover:bg-slate-800 text-slate-300 border border-slate-800">
+                <i class="fa-solid fa-bowl-food text-base"></i> ម្ហូបអាហារ និងភេសជ្ជៈ (Food & Drinks)
+            </button>
+            <button onclick="switchTab('tab-misc')" id="btn-tab-misc" class="tab-btn px-6 py-3.5 rounded-2xl font-bold text-xs tracking-wider uppercase transition-all flex items-center gap-2 bg-slate-900 hover:bg-slate-800 text-slate-300 border border-slate-800">
+                <i class="fa-solid fa-icons text-base"></i> ស្នាដៃផ្សេងៗ (Miscellaneous Ads)
+            </button>
+        </div>
+
+        <!-- Hidden Input for Dynamic Image Replacement -->
+        <input type="file" id="image-upload-trigger" accept="image/*" class="hidden" onchange="handleImageSelection(event)">
+
+        <!-- TAB 1: 12 MONTH SERIES (កម្រងស្នាដៃ ១២ ខែ) -->
+        <section id="tab-months" class="portfolio-tab space-y-8 block">
+            <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4 border-b border-cambodia-gold/20 pb-4">
+                <div>
+                    <h2 class="moul-title text-lg md:text-xl text-cambodia-gold">កម្រងស្នាដៃប្រចាំខែទាំង ១២ តាមលំដាប់លំដោយ (01 - 12)</h2>
+                    <p class="text-xs text-slate-400 mt-1">រៀបចំរៀងរាប់តាមសណ្តាប់ធ្នាប់បុណ្យជាតិ និងវប្បធម៌ខ្មែរ</p>
+                </div>
+                <!-- Mini Month Search/Filter -->
+                <div class="flex items-center gap-2">
+                    <span class="text-xs text-slate-400 whitespace-nowrap"><i class="fa-solid fa-filter text-cambodia-gold"></i> តម្រងរហ័ស៖</span>
+                    <select onchange="filterMonths(this.value)" class="bg-slate-900 border border-slate-800 rounded-xl px-3 py-1.5 text-xs text-slate-300 font-bold outline-none focus:border-cambodia-gold">
+                        <option value="all">បង្ហាញទាំងអស់ (Show All)</option>
+                        <option value="jan">ខែមករា (01)</option>
+                        <option value="feb">ខែកុម្ភៈ (02)</option>
+                        <option value="mar">ខែមីនា (03)</option>
+                        <option value="apr">ខែមេសា (04)</option>
+                        <option value="may">ខែឧសភា (05)</option>
+                        <option value="jun">ខែមិថុនា (06)</option>
+                        <option value="jul">ខែកក្កដា (07)</option>
+                        <option value="aug">ខែសីហា (08)</option>
+                        <option value="sep">ខែកញ្ញា (09)</option>
+                        <option value="oct">ខែតុលា (10)</option>
+                        <option value="nov">ខែវិច្ឆិកា (11)</option>
+                        <option value="dec">ខែធ្នូ (12)</option>
+                    </select>
+                </div>
+            </div>
+
+            <!-- Grid Container -->
+            <div id="months-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+                <!-- Cards will be populated dynamically via JavaScript -->
+            </div>
+        </section>
+
+        <!-- TAB 2: FOOD & DRINKS (ម្ហូបអាហារ និងភេសជ្ជៈ) -->
+        <section id="tab-food" class="portfolio-tab space-y-8 hidden">
+            <div class="border-b border-cambodia-gold/20 pb-4">
+                <h2 class="moul-title text-lg md:text-xl text-cambodia-gold">ផ្ទាំងផ្សព្វផ្សាយម្ហូបអាហារ និងភេសជ្ជៈ (Food & Drinks Showcase)</h2>
+                <p class="text-xs text-slate-400 mt-1">រចនាប្លង់ម៉ឺនុយ ផ្សព្វផ្សាយភេសជ្ជៈកាហ្វេ សូដា និងមុខម្ហូបប្រណីតៗ</p>
+            </div>
+
+            <div id="food-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+                <!-- Food and Drink cards populated dynamically -->
+            </div>
+        </section>
+
+        <!-- TAB 3: OTHER MISCELLANEOUS CREATIVE WORKS (ស្នាដៃផ្សេងៗ) -->
+        <section id="tab-misc" class="portfolio-tab space-y-8 hidden">
+            <div class="border-b border-cambodia-gold/20 pb-4">
+                <h2 class="moul-title text-lg md:text-xl text-cambodia-gold">ស្នាដៃច្នៃប្រឌិត និងការផ្សព្វផ្សាយពហុទម្រង់ (Other Graphic Designs)</h2>
+                <p class="text-xs text-slate-400 mt-1">ការរចនាកញ្ចប់ផលិតផល ឡូហ្គោ ប្លង់ 3D Booth និងការងារសង្គមផ្សេងៗ</p>
+            </div>
+
+            <div id="misc-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+                <!-- Miscellaneous cards populated dynamically -->
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Design & Workspace Tools Section -->
+    <section class="no-print max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 border-t border-slate-900">
+        <div class="glass-panel rounded-3xl p-8 md:p-12">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+                <div class="space-y-6">
+                    <h2 class="moul-title text-lg md:text-2xl text-cambodia-gold leading-relaxed">បច្ចេកវិទ្យា និងជំនាញឯកទេស (Expertise Toolkit)</h2>
+                    <p class="text-xs text-slate-300 leading-relaxed">
+                        គ្រប់ផ្ទាំងគំនូរ Poster និងប្លង់ផ្សព្វផ្សាយទាំងអស់ ត្រូវបានរៀបចំឡើងដោយប្រើប្រាស់នូវបច្ចេកទេសគំនូសប្លង់ កម្រិតពន្លឺ និងទ្រង់ទ្រាយបែបស្តង់ដារវិជ្ជាជីវៈខ្ពស់ ដើម្បីធានាបាននូវកម្រិតច្បាស់សម្រាប់ការបោះពុម្ពទំហំធំ។
+                    </p>
+                    <div class="grid grid-cols-2 gap-4">
+                        <div class="p-3.5 rounded-xl bg-slate-950/60 border border-slate-800 flex items-center gap-3">
+                            <div class="w-8 h-8 rounded-lg bg-[#00c8ff]/15 text-[#00c8ff] flex items-center justify-center font-bold text-sm font-inter">Ps</div>
+                            <div>
+                                <p class="text-xs font-bold text-slate-200">Photoshop</p>
+                                <span class="text-[9px] text-slate-500">កែសម្រួលរូបភាព</span>
+                            </div>
+                        </div>
+                        <div class="p-3.5 rounded-xl bg-slate-950/60 border border-slate-800 flex items-center gap-3">
+                            <div class="w-8 h-8 rounded-lg bg-[#ff9a00]/15 text-[#ff9a00] flex items-center justify-center font-bold text-sm font-inter">Ai</div>
+                            <div>
+                                <p class="text-xs font-bold text-slate-200">Illustrator</p>
+                                <span class="text-[9px] text-slate-500">គូរក្បាច់ និង Logo</span>
+                            </div>
+                        </div>
+                        <div class="p-3.5 rounded-xl bg-slate-950/60 border border-slate-800 flex items-center gap-3">
+                            <div class="w-8 h-8 rounded-lg bg-[#ff3c00]/15 text-[#ff3c00] flex items-center justify-center font-bold text-sm font-inter">3D</div>
+                            <div>
+                                <p class="text-xs font-bold text-slate-200">Autodesk 3ds Max</p>
+                                <span class="text-[9px] text-slate-500">បង្កើតរូបរាងត្រីមាត្រ</span>
+                            </div>
+                        </div>
+                        <div class="p-3.5 rounded-xl bg-slate-950/60 border border-slate-800 flex items-center gap-3">
+                            <div class="w-8 h-8 rounded-lg bg-emerald-500/15 text-emerald-400 flex items-center justify-center text-sm"><i class="fa-solid fa-print"></i></div>
+                            <div>
+                                <p class="text-xs font-bold text-slate-200">CMYK Colors</p>
+                                <span class="text-[9px] text-slate-500">បច្ចេកទេសបោះពុម្ព</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Contact & Project Ordering Card -->
+                <div id="contact" class="bg-slate-950/85 border border-cambodia-gold/20 p-6 sm:p-8 rounded-2xl space-y-4 shadow-lg shadow-cambodia-gold/5">
+                    <div class="flex items-center gap-3">
+                        <div class="w-10 h-10 rounded-xl bg-cambodia-gold/15 text-cambodia-gold flex items-center justify-center text-lg">
+                            <i class="fa-solid fa-paper-plane animate-pulse"></i>
+                        </div>
+                        <div>
+                            <span class="moul-title text-xs md:text-sm text-cambodia-gold tracking-wide block">ទំនាក់ទំនងជួលរចនាប្លង់</span>
+                            <span class="text-[9px] text-slate-400 font-inter">Get in touch with Chhoeun Sivvoeuy</span>
+                        </div>
+                    </div>
+                    
+                    <form onsubmit="handleContactSubmit(event)" class="space-y-3">
+                        <div>
+                            <label class="block text-[10px] text-slate-400 uppercase font-bold mb-1">ឈ្មោះអ្នកទាក់ទង (Name)</label>
+                            <input type="text" required placeholder="សូមបញ្ចូលឈ្មោះរបស់បង..." class="w-full bg-slate-900 border border-slate-800 rounded-xl px-4 py-2 text-xs text-slate-200 outline-none focus:border-cambodia-gold">
+                        </div>
+                        <div>
+                            <label class="block text-[10px] text-slate-400 uppercase font-bold mb-1">លេខទូរស័ព្ទ ឬតេឡេក្រាម (Telegram / Phone)</label>
+                            <input type="text" required placeholder="ឧទហរណ៍៖ +855 96..." class="w-full bg-slate-900 border border-slate-800 rounded-xl px-4 py-2 text-xs text-slate-200 outline-none focus:border-cambodia-gold">
+                        </div>
+                        <div>
+                            <label class="block text-[10px] text-slate-400 uppercase font-bold mb-1">គម្រោងដែលចង់ជួលរចនា (Project Type)</label>
+                            <select class="w-full bg-slate-900 border border-slate-800 rounded-xl px-4 py-2 text-xs text-slate-300 outline-none focus:border-cambodia-gold">
+                                <option>រចនា Poster ជាតិ និងវប្បធម៌ខ្មែរ</option>
+                                <option>រចនាផ្ទាំងផ្សព្វផ្សាយម្ហូបអាហារ និងភេសជ្ជៈ (Food & Drinks Menu)</option>
+                                <option>រចនាកញ្ចប់ផលិតផល (Packaging Design)</option>
+                                <option>គម្រោងរចនាក្រាហ្វិកផ្សេងៗទៀត...</option>
+                            </select>
+                        </div>
+                        <button type="submit" class="w-full bg-gradient-to-r from-cambodia-gold to-cambodia-goldDark hover:brightness-110 active:scale-[0.98] text-cambodia-navy font-black text-xs py-2.5 rounded-xl transition-all shadow-lg shadow-cambodia-gold/10 flex items-center justify-center gap-2">
+                            <i class="fa-solid fa-paper-plane"></i> ផ្ញើសារទាក់ទងមកខ្ញុំ
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer Area -->
+    <footer class="bg-slate-950 py-8 px-4 border-t border-slate-900 text-center">
+        <p class="text-[11px] text-slate-500 leading-relaxed font-light">
+            រក្សាសិទ្ធិគ្រប់យ៉ាង © ២០២៦ ឈឿន ស៊ីវវឿយ • និស្សិតសាកលវិទ្យាល័យ ប៊ែលធី អន្តរជាតិ (BELTEI)<br>
+            <span class="text-[9px] text-slate-600 mt-1 block">Designed & Developed with Premium Dynamic Khmer Web Features</span>
+        </p>
+    </footer>
+
+    <!-- Custom Lightbox Modal with Dynamic Image Swap and Slideshow Navigation -->
+    <div id="lightbox-modal" class="no-print fixed inset-0 z-50 bg-slate-950/98 flex flex-col items-center justify-center p-4 md:p-8 hidden opacity-0 transition-opacity duration-300">
+        
+        <!-- Top Toolbar -->
+        <div class="w-full max-w-5xl flex justify-between items-center mb-4">
+            <span class="text-slate-400 text-xs md:text-sm font-bold flex items-center gap-2">
+                <i class="fa-solid fa-images text-cambodia-gold"></i> ទិដ្ឋភាពពិស្តារ / Interactive Slide Viewer
+            </span>
+            <div class="flex items-center gap-3">
+                <button id="lightbox-upload-btn" onclick="triggerUploadFromLightbox()" class="bg-emerald-600 hover:bg-emerald-500 text-white font-bold text-xs py-1.5 px-3.5 rounded-xl transition-all flex items-center gap-1.5 shadow-md">
+                    <i class="fa-solid fa-camera"></i> ជំនួសរូបនេះ (Upload)
+                </button>
+                <button onclick="closeLightbox()" class="bg-cambodia-gold hover:bg-cambodia-goldDark text-cambodia-navy w-9 h-9 rounded-full flex items-center justify-center transition-all shadow-lg active:scale-95">
+                    <i class="fa-solid fa-xmark text-base font-bold"></i>
+                </button>
+            </div>
+        </div>
+        
+        <!-- Main Interactive Panel -->
+        <div class="max-w-5xl w-full flex flex-col md:flex-row gap-6 md:gap-10 items-center justify-center relative">
+            
+            <!-- Slider Left Arrow -->
+            <button onclick="slidePrev()" class="absolute left-0 top-1/2 -translate-y-1/2 z-20 bg-slate-900/80 hover:bg-cambodia-gold/30 border border-slate-800 hover:border-cambodia-gold text-slate-100 hover:text-cambodia-gold w-12 h-12 rounded-full hidden md:flex items-center justify-center transition-all">
+                <i class="fa-solid fa-chevron-left text-lg"></i>
+            </button>
+            
+            <!-- Image Showcase Area -->
+            <div class="w-full md:w-1/2 max-h-[70vh] flex justify-center items-center relative">
+                <img id="lightbox-img" src="" alt="Zoomed Asset" class="max-w-full max-h-[60vh] rounded-2xl shadow-2xl border-2 border-cambodia-gold object-contain bg-slate-950">
+                <div id="lightbox-placeholder-alert" class="absolute inset-x-4 bottom-4 bg-slate-950/90 border border-amber-500/30 p-2.5 rounded-xl text-center hidden">
+                    <p class="text-[10px] text-amber-400 font-bold"><i class="fa-solid fa-wand-magic-sparkles mr-1 animate-spin"></i> សន្លឹកគំរូជាបណ្តោះអាសន្ន (បងអាចចុច «ជំនួសរូបនេះ» ដើម្បីបញ្ចូលរូប Poster ផ្ទាល់ខ្លួន)</p>
+                </div>
+            </div>
+            
+            <!-- Details Panel -->
+            <div class="w-full md:w-1/2 space-y-4 text-left">
+                <span id="lightbox-category" class="px-3 py-1 bg-cambodia-gold/15 text-cambodia-gold border border-cambodia-gold/45 text-[10px] font-extrabold rounded-lg inline-block uppercase"></span>
+                <h3 id="lightbox-title" class="moul-title text-base md:text-lg text-cambodia-gold leading-relaxed"></h3>
+                <div class="h-0.5 w-20 bg-gradient-to-r from-cambodia-gold to-transparent"></div>
+                
+                <p class="text-[11px] text-slate-400">
+                    <strong>ឈ្មោះឯកសារ៖</strong> <span id="lightbox-filename" class="text-slate-200 font-mono"></span>
+                </p>
+                <p id="lightbox-desc" class="text-xs text-slate-300 leading-relaxed text-justify"></p>
+                
+                <div class="p-4 bg-slate-900/60 rounded-xl border border-slate-800/80 text-[11px] text-slate-400 space-y-1.5">
+                    <p><strong class="text-slate-200"><i class="fa-solid fa-circle-check text-emerald-500 mr-1"></i> កម្រិតច្បាស់៖</strong> CMYK Print Ready Vector (300 DPI)</p>
+                    <p><strong class="text-slate-200"><i class="fa-solid fa-circle-check text-emerald-500 mr-1"></i> បច្ចេកទេស៖</strong> Color grading, realistic shadow, vector layout masking</p>
+                </div>
+                
+                <!-- Controls for Mobile & Tablet -->
+                <div class="flex items-center justify-between gap-3 pt-4 border-t border-slate-900 md:justify-start">
+                    <div class="flex gap-2">
+                        <button onclick="slidePrev()" class="bg-slate-900 border border-slate-800 text-slate-300 hover:text-cambodia-gold w-10 h-10 rounded-lg flex md:hidden items-center justify-center active:scale-95 transition-all">
+                            <i class="fa-solid fa-chevron-left text-sm"></i>
+                        </button>
+                        <button onclick="slideNext()" class="bg-slate-900 border border-slate-800 text-slate-300 hover:text-cambodia-gold w-10 h-10 rounded-lg flex md:hidden items-center justify-center active:scale-95 transition-all">
+                            <i class="fa-solid fa-chevron-right text-sm"></i>
+                        </button>
+                    </div>
+                    <button onclick="closeLightbox()" class="bg-gradient-to-r from-cambodia-gold to-cambodia-goldDark text-cambodia-navy font-bold text-xs px-6 py-2.5 rounded-xl hover:brightness-110 active:scale-95 transition-all flex items-center gap-1.5">
+                        <i class="fa-solid fa-circle-check"></i> បិទវិញ (Close)
+                    </button>
+                </div>
+            </div>
+
+            <!-- Slider Right Arrow -->
+            <button onclick="slideNext()" class="absolute right-0 top-1/2 -translate-y-1/2 z-20 bg-slate-900/80 hover:bg-cambodia-gold/30 border border-slate-800 hover:border-cambodia-gold text-slate-100 hover:text-cambodia-gold w-12 h-12 rounded-full hidden md:flex items-center justify-center transition-all">
+                <i class="fa-solid fa-chevron-right text-lg"></i>
+            </button>
+            
+        </div>
+    </div>
+
+    <script>
+        // Core Portfolio Database incorporating Months (1 to 12), Food, Drinks, and Miscellaneous
+        const portfolioData = {
+            months: [
+                { id: 'm1', idx: 0, code: 'jan', month: 'ខែមករា (Month 01)', title: 'ទិវាជ័យជម្នះ ៧ មករា', file: 'as_3.jpg', isPlaceholder: false, desc: 'ការរចនាផ្ទាំងទស្សនីយភាពដើម្បីរំលឹកគុណូបការៈ និងអបអរសាទរថ្ងៃជាប្រវត្តិសាស្ត្រ ៧ មករា នៃការរស់ឡើងវិញរបស់ប្រជាជនកម្ពុជា។ រចនាឡើងជាមួយនិមិត្តសញ្ញាសន្តិភាព ព្រាបស និងផ្កាម្លិះក្រអូបសាយ។' },
+                { id: 'm2', idx: 1, code: 'feb', month: 'ខែកុម្ភៈ (Month 02)', title: 'ពិធីបុណ្យមាឃបូជា', file: 'មាឃបូជា.jpg', isPlaceholder: false, desc: 'ការរចនាផ្តោតលើពុទ្ធសាសនាជាតិ និងការជួបជុំគ្នាជាប្រវត្តិសាស្ត្រនៃព្រះអរហន្ត ១,២៥០ អង្គ។ ការប្រើប្រាស់ពណ៌លឿងទុំនៃស្បង់ចីវរ និងពន្លឺប្រទីបបណ្តែតបំភ្លឺរាត្រីស្រអាប់។' },
+                { id: 'm3', idx: 2, code: 'mar', month: 'ខែមីនា (Month 03)', title: 'ទិវានារីអន្តរជាតិ ៨ មីនា', file: 'march1.jpg', isPlaceholder: false, desc: 'ស្នាដៃរចនាដើម្បីអបអរសាទរការលើកកម្ពស់សិទ្ធិ សេរីភាព និងតម្លៃរបស់ស្ត្រីជាតិ និងអន្តរជាតិ។ ប្រើប្រាស់រូបភាពតំណាងស្រ្តីកម្ពុជាដ៏ទន់ភ្លន់ លាយឡំនឹងការតុបតែងផ្កាឈូកតំណាងឱ្យភាពបរិសុទ្ធ។' },
+                { id: 'm4', idx: 3, code: 'apr', month: 'ខែមេសា (Month 04)', title: 'ចូលឆ្នាំថ្មីប្រពៃណីជាតិខ្មែរ', file: '4be14f526f9b06bfef24e3836ade1584.jpg', isPlaceholder: false, desc: 'ការបង្កើតផ្ទាំងទស្សនីយភាពដើម្បីចូលរួមអបអរសាទរពិធីបុណ្យចូលឆ្នាំថ្មីប្រពៃណីជាតិ ដោយរំលេចរូបភាពទេវតាឆ្នាំថ្មី និងក្បាច់រចនាខ្មែរដ៏ប្រណីត បញ្ចូលដោយភាពរស់រវើក និងពន្លឺចាំងចែង។' },
+                { id: 'm5', idx: 4, code: 'may', month: 'ខែឧសភា (Month 05)', title: 'ព្រះរាជពិធីបុណ្យច្រត់ព្រះនង្គ័ល', file: 'អបអរសាទរ-ព្រះ​រាជ​ពិធី​ច្រត់​ព្រះ​នង្គ័ល.jpg', isPlaceholder: false, desc: 'ការរចនាឡើងដើម្បីលើកស្ទួយដល់ព្រះរាជពិធីបុណ្យកសិកម្មជាតិដ៏រុងរឿង។ ស្នាដៃនេះរួមបញ្ចូលគ្នារវាងគោកឧសភរាជ វាលស្រែពណ៌មាស ព្រមទាំងនិមិត្តសញ្ញាព្រះបរមរាជវាំងខ្មែរយ៉ាងរស់រវើក។' },
+                { id: 'm6', idx: 5, code: 'jun', month: 'ខែមិថុនា (Month 06)', title: 'ទិវាកុមារអន្តរជាតិ ១ មិថុនា', file: 'kOMA.jpg', isPlaceholder: false, desc: 'ការរចនាផ្តោតសំខាន់លើការលើកកម្ពស់សិទ្ធិ និងសុខុមាលភាពរបស់កុមារ។ ប្រើប្រាស់ផ្ទៃមេឃពណ៌ខៀវ និងរូបភាពក្រុមគ្រួសារមើលទៅពោរពេញដោយក្តីសង្ឃឹម។' },
+                { id: 'm7', idx: 6, code: 'jul', month: 'ខែកក្កតា (Month 07', title: 'ពិធីបុណ្យចូលព្រះវស្សា', file: 'mak.jpg', isPlaceholder: false, desc: 'ការរចនាផ្ទាំងទស្សនីយភាពប្រកបដោយអត្ថន័យជ្រាលជ្រៅសម្រាប់ពិធីបុណ្យចូលព្រះវស្សា ដែលជារដូវកាលព្រះសង្ឃគង់ចាំវស្សា។ រចនាដោយសម្លេងពណ៌ស្រគត់ស្រគំ។' },
+                { id: 'm8', idx: 7, code: 'aug', month: 'ខែសីហា (Month 08)', title: 'ទិវាយុវជនអន្តរជាតិ ១២ សីហា', file: 'march.jpg', isPlaceholder: false, desc: 'ត្រូវបានប្រារព្ធឡើងជារៀងរាល់ឆ្នាំនៅថ្ងៃទី ១២ ខែសីហា។ ទិវានេះបង្កើតឡើងដោយអង្គការសហប្រជាជាតិ (UN) ចាប់តាំងពីឆ្នាំ ១៩៩៩ ដើម្បីលើកកម្ពស់ការយល់ដឹងអំពីបញ្ហាប្រឈម តម្រូវការ និងសក្ដានុពលរបស់យុវជនក្នុងសង្គម។' },
+                { id: 'm9', idx: 8, code: 'sep', month: 'ខែកញ្ញា (Month 09)', title: 'ពិធីបុណ្យភ្ជុំបិណ្ឌ', file: 'qasf.jpg', isPlaceholder: false, desc: 'ពិធីបុណ្យប្រពៃណីដ៏ធំបង្អស់មួយរបស់ជាតិខ្មែរ។ ស្នាដៃរចនានេះបង្ហាញពីរូបភាពវត្តអារាមបុរាណ និងចង្អានស្រាក់ ដែលជានិមិត្តរូបសម្រាប់ការឧទ្ទិសកុសល។' },
+                { id: 'm10', idx: 9, code: 'oct', month: 'ខែតុលា (Month 10)', title: 'ព្រះរាជពិធីចម្រើនព្រះជន្ម ព្រះមហាក្សត្រ', file: 'king.jpg', isPlaceholder: false, desc: 'ការរចនាបែបគារវភក្តី និងកតញ្ញុតាធម៌ចំពោះព្រះករុណាព្រះបាទសម្តេចព្រះបរមនាថ នរោត្តម សីហមុនី ព្រះមហាក្សត្រនៃព្រះរាជាណាចក្រកម្ពុជា។' },
+                { id: 'm11', idx: 10, code: 'nov', month: 'ខែវិច្ឆិកា (Month 11)', title: 'ព្រះរាជពិធីបុណ្យអុំទូក', file: 'un_2.jpg', isPlaceholder: false, desc: 'ការរៀបចំប្លង់ដ៏លម្អិត បញ្ចូលគ្នារវាងមហោស្រពបុណ្យអុំទូក បណ្តែតប្រទីប អកអំបុក និងសំពះព្រះខែ។ រួមបញ្ចូលទាំងព្រះបរមរាជវាំង និងទិដ្ឋភាពប្រណាំងទូក។' },
+                { id: 'm12', idx: 11, code: 'dec', month: 'ខែធ្នូ (Month 12)', title: 'ទិវាជ័យជម្នះ នយោបាយឈ្នះ-ឈ្នះ', file: 'Ak.jpg', isPlaceholder: false, desc: 'ការរចនាបែបប្រវត្តិសាស្ត្រតំណាងសន្តិភាពពេញលេញ។ ផ្ទាំងស្នាដៃនេះបង្ហាញអំពីវិមានឈ្នះ-ឈ្នះដ៏រឹងមាំ អមដោយមេឃពណ៌ខៀវស្រឡះ ពពកស និងរូបភាពព្រាបសន្តិភាព។' }
+            ],
+            food: [
+                { id: 'f1', idx: 12, code: 'food', category: 'ម្ហូបអាហារ និងភេសជ្ជៈ', title: 'ម៉ឺនុយភេសជ្ជៈ Starbucks Matcha', file: 'Drink-14.jpg', isPlaceholder: false, desc: 'ប្លង់រចនាផ្សព្វផ្សាយភេសជ្ជៈ Starbucks Matcha បញ្ចូលគ្នារវាងតែបៃតង និងគ្រាប់កាហ្វេ ជាមួយស្រមោល និងពន្លឺបែប Studio Light ដ៏ទាក់ទាញភ្នែក។' },
+                { id: 'f2', idx: 13, code: 'food', category: 'ម្ហូបអាហារ និងភេសជ្ជៈ', title: 'សាប៊ូបឺរធម្មជាតិ', file: '9999.jpg', isPlaceholder: false, desc: 'ការរចនាយុទ្ធនាការផ្សព្វផ្សាយទឹកដោះគោស្រស់ SAPINS បង្ហាញពីគុណភាពធម្មជាតិ និងសារធាតុចិញ្ចឹមខ្ពស់ ជាមួយនឹងទេសភាពវាលស្មៅពណ៌បៃតងស្រស់។' },
+                { id: 'f3', idx: 14, code: 'food', category: 'ម្ហូបអាហារ និងភេសជ្ជៈ', title: 'ម៉ឺនុយភេសជ្ជៈ Starbucks (Starbucks Drink Menu)', file: 'Poster-Drunks.jpg', isPlaceholder: false, desc: 'ប្លង់រៀបចំម៉ឺនុយភេសជ្ជៈ Starbucks ដែលបង្ហាញពីជម្រើសរសជាតិចម្រុះ ងាយស្រួលមើល និងមានភាពទាក់ទាញ។' },
+                { id: 'f4', idx: 15, code: 'food', category: 'ម្ហូបអាហារ និងភេសជ្ជៈ', title: 'ប្រូម៉ូសិនទិញ ១ ថែម ១ (Buy 1 Get 1 Promo)', file: 'menu21.jpg', isPlaceholder: false, desc: 'ការរចនាផ្ទាំងប្រូម៉ូសិនពិសេសសម្រាប់ភេសជ្ជៈ Starbucks ពណ៌បៃតងស្រស់ស្រាយសម្រាប់អតិថិជន។' },
+                { id: 'f5', idx: 16, code: 'food', category: 'ម្ហូបអាហារ និងភេសជ្ជៈ', title: 'ប្រូម៉ូសិនទិញ ២ ថែម ១ (Buy 2 Get 1 Promo)', file: 'Untitled-2.jpg', isPlaceholder: false, desc: 'ការផ្សព្វផ្សាយប្រូម៉ូសិនទិញ ២ ថែម ១ ជាមួយនឹងការរៀបចំកែវភេសជ្ជៈលើទម្រឈើដ៏ស្រស់ស្អាត។' },
+                { id: 'f6', idx: 17, code: 'food', category: 'ម្ហូបអាហារ និងភេសជ្ជៈ', title: 'ផ្ទាំងផ្សព្វផ្សាយ Starbucks (Starbucks Ad)', file: 'Untitled-5.jpg', isPlaceholder: false, desc: 'យុទ្ធនាការផ្សព្វផ្សាយភេសជ្ជៈ Starbucks ជាមួយនឹងផ្ទៃខាងក្រោយពណ៌បៃតងបែបធម្មជាតិ។' },
+                { id: 'f7', idx: 18, code: 'food', category: 'ម្ហូបអាហារ និងភេសជ្ជៈ', title: 'ប្រូម៉ូសិន Pizza បញ្ចុះតម្លៃ 20%', file: 'sh.jpg', isPlaceholder: false, desc: 'ការរចនា Poster ប្រូម៉ូសិន Pizza ពណ៌លឿងទាក់ទាញ ដែលមានការបញ្ចុះតម្លៃ 20% និងទិញ ១ ថែម ១។' }
+            ],
+            misc: [
+                { id: 'o1', idx: 19, code: 'misc', category: 'ស្នាដៃច្នៃប្រឌិតផ្សេងៗ', title: 'Mockup', file: 'unnamed (2).jpg', isPlaceholder: false, desc: 'ការរចនា Poster សាប៊ូ Olay ជាមួយនឹងផ្ទៃខាងក្រោយពណ៌ក្រហមដ៏ប្រណីត និងទាក់ទាញ។' },
+                { id: 'o2', idx: 20, code: 'misc', category: 'ស្នាដៃច្នៃប្រឌិតផ្សេងៗ', title: ' សាទរកម្ពុជា', file: '888.jpg', isPlaceholder: false, desc: 'សាទរកម្ពុជា គឺជាព្រឹត្តិការណ៍នៃការសាទរដល់សង្គមមួយដែលប្រកបដោយភាពរស់រវើក ជាមួយនឹងការបង្ហាញវិសេសភាព នៃអត្តសញ្ញាណ ដោយមានចិត្តសោមនស្សចំពោះអ្វីៗដែល' },
+                { id: 'o3', idx: 21, code: 'misc', category: 'ស្នាដៃច្នៃប្រឌិតផ្សេងៗ', title: 'Ford Ranger', file: 'aa.jpg', isPlaceholder: false, desc: 'រថយន្ត Ford Ranger គឺជាម៉ូដែលភីកអាប់ (Pick-up) ដ៏ពេញនិយមបំផុតមួយនៅក្នុងប្រទេសកម្ពុជា។ ថ្មីៗនេះ រថយន្តស៊េរីថ្មីៗដូចជា Ford Ranger XL, XLT, Wildtrak និង Raptor ត្រូវបានដាក់លក់លើទីផ្សារក្នុងស្រុក ដោយមានតម្លៃចាប់ពីប្រមាណ $39,900 ឡើងទៅ。ជាងនេះទៅទៀត រថយន្ត Ford ក៏មានរោងចក្រដំឡើងផ្ទាល់ខ្លួននៅក្នុងប្រទេសកម្ពុជា' },
+                { id: 'o4', idx: 22, code: 'misc', category: 'ស្នាដៃច្នៃប្រឌិតផ្សេងៗ', title: 'ទឹកពិសាកម្ពុជា', file: 'bran.jpg', isPlaceholder: false, desc: 'ងដំណើររបស់ទឹក នៅលើទឹកដីដ៏ចំណាស់មួយនេះ បានផ្សារភ្ជាប់ជាមួយ ប្រជាជន សិល្បៈ និងជំនឿរបស់ប្រជាជនខ្មែរពីមួយជំនាន់ទៅមួយជំនាន់ រហូតមកដល់សព្វថ្ងៃ ដែលជាអត្តសញ្ញណជាតិតែមួយ ខ្ញុំគឺកម្ពុជា ហើយខ្ញុំគឺ ទឹកពិសាកម្ពុជា ទឹកពិសាកម្ពុជា មានមោទនភាពជាផលិតផលជាតិ .' },
+                { id: 'o5', idx: 23, code: 'misc', category: 'ស្នាដៃច្នៃប្រឌិតផ្សេងៗ', title: 'Starbucks (1)', file: '12.jpg', isPlaceholder: false, desc: 'ការរចនាផ្ទាំងផ្សព្វផ្សាយទឹកសុទ្ធកម្ពុជា ជាមួយនឹងស្ទាយរចនាផ្កាឈូក និងផ្ទៃខាងក្រោយពណ៌ស៊ីជម្ពូ។' },
+                { id: 'o6', idx: 24, code: 'misc', category: 'ស្នាដៃច្នៃប្រឌិតផ្សេងៗ', title: 'ថ្នាំសម្រាប់បាញ់ស្មៅ(2)', file: '21.jpg', isPlaceholder: false, desc: 'ការរចនាផ្ទាំងផ្សព្វផ្សាយទឹកសុទ្ធកម្ពុជា ជាមួយនឹងស្ទាយរចនាផ្កាឈូក និងផ្ទៃខាងក្រោយពណ៌ស៊ីជម្ពូ។' },
+                { id: 'o7', idx: 25, code: 'misc', category: 'ស្នាដៃច្នៃប្រឌិតផ្សេងៗ', title: 'ថ្នាំកសិកម្ម G-PLANTER', file: 'reanps.jpg', isPlaceholder: false, desc: 'ផ្ទាំងផ្សព្វផ្សាយថ្នាំកសិកម្ម G-PLANTER ការពារដំណាំ។' },
+                { id: 'o8', idx: 26, code: 'misc', category: 'ស្នាដៃច្នៃប្រឌិតផ្សេងៗ', title: 'ម៉ាស៊ីនក្រឡុកផ្លែឈើ (Portable Blender)', file: 'Pruduct1.jpg', isPlaceholder: false, desc: 'ផ្ទាំងផ្សព្វផ្សាយផលិតផលម៉ាស៊ីនក្រឡុកផ្លែឈើខ្នាតតូច ដែលបង្ហាញភាពស្រស់ស្រាយនៃផ្លែឈើចម្រុះ និងការរចនាផលិតផលយ៉ាងលេចធ្លោ។' },
+                { id: 'o9', idx: 27, code: 'misc', category: 'ស្នាដៃច្នៃប្រឌិតផ្សេងៗ', title: 'សាប៊ូលាងមុខ Vitamin C-D-E (Face Wash)', file: 'poster2.jpg', isPlaceholder: false, desc: 'ការរចនាផ្ទាំងផលិតផលសាប៊ូលាងមុខ ប្លង់ផ្សព្វផ្សាយផ្តោតលើភាពធម្មជាតិ ប្រើប្រាស់ពណ៌បៃតងតំណាងឱ្យការចម្រាញ់ចេញពីរុក្ខជាតិ។' },
+                { id: 'o10', idx: 28, code: 'misc', category: 'ស្នាដៃច្នៃប្រឌិតផ្សេងៗ', title: 'ផលិតផលថែរក្សាសម្រស់ OLAY (Red)', file: 'f5385521fbb4b2a1f4b326c186097c58.jpg', isPlaceholder: false, desc: 'ការរចនាប្លង់ផ្សព្វផ្សាយផលិតផល OLAY ពណ៌ក្រហមដ៏ប្រណីត បង្ហាញពីភាពទាក់ទាញ និងអំណោយផលល្អសម្រាប់ការថែរក្សាស្បែកមុខ។' },
+                { id: 'o11', idx: 29, code: 'misc', category: 'ស្នាដៃច្នៃប្រឌិតផ្សេងៗ', title: 'សាប៊ូលាងមុខ (Premium Cosmetics Ads)', file: 'cosmetics_ad.jpg', isPlaceholder: false, desc: 'ការរៀបចំសន្លឹកប្លង់ផ្សព្វផ្សាយគ្រឿងសម្អាងប្រណីត ដោយមានការរៀបចំតុបតែងពណ៌ និងពន្លឺយ៉ាងស័ក្តិសមដើម្បីទាក់ទាញអតិថិជន។' },
+                { id: 'o12', idx: 30, code: 'misc', category: 'ស្នាដៃច្នៃប្រឌិតផ្សេងៗ', title: 'ផ្ទាំងទស្សនីយភាព បុណ្យអុំទូក', file: 'TUK.jpg', isPlaceholder: false, desc: 'ផ្ទាំងផ្សព្វផ្សាយសាទរព្រះរាជពិធីបុណ្យអុំទូក ដែលរំលេចចេញនូវភាពស្រស់បំព្រងនៃទិដ្ឋភាពប្រណាំងទូក និងការតុបតែងស្អាតបែបប្រពៃណីខ្មែរ។' },
+                { id: 'o13', idx: 31, code: 'misc', category: 'ស្នាដៃច្នៃប្រឌិតផ្សេងៗ', title: 'ផ្សព្វផ្សាយរថយន្ត Ford (Ford Ranger CNY Promo)', file: 'CAR12.jpg', isPlaceholder: false, desc: 'ការរចនាផ្ទាំងផ្សព្វផ្សាយរថយន្ត Ford Ranger សម្រាប់ឱកាសបុណ្យចូលឆ្នាំចិន ដោយរំលេចពណ៌ក្រហម និងមាសតំណាងឱ្យហុងស៊ុយល្អ។' },
+                { id: 'o14', idx: 32, code: 'misc', category: 'ស្នាដៃច្នៃប្រឌិតផ្សេងៗ', title: 'ផ្ទាំងផ្សព្វផ្សាយខ្សែភាពយន្ត (Movie Poster - Project Small)', file: 'Hi.jpg', isPlaceholder: false, desc: 'ការរចនា Poster ខ្សែភាពយន្តឬវីដេអូអប់រំ ដែលបង្ហាញពីទិដ្ឋភាពជិះម៉ូតូកាត់វាលស្រែពោរពេញដោយស្នាមញញឹមរស់រវើក។' },
+                { id: 'o15', idx: 33, code: 'misc', category: 'ស្នាដៃច្នៃប្រឌិតផ្សេងៗ', title: 'ផលិតផល OLAY (Olay Defy Gravity)', file: 'OLAY.jpg', isPlaceholder: false, desc: 'ការរចនាផ្ទាំងផ្សព្វផ្សាយផលិតផល OLAY ជាទម្រង់ឆាកល្ខោនពណ៌ក្រហមដ៏ប្រណីត បង្ហាញពីភាពលេចធ្លោនៃផលិតផល។' },
+                { id: 'o16', idx: 34, code: 'misc', category: 'ស្នាដៃច្នៃប្រឌិតផ្សេងៗ', title: 'រមណីយដ្ឋានអង្គរ បេតិកភណ្ឌពិភពលោក', file: 'Ak.jpg', isPlaceholder: false, desc: 'អបអរសាទរខួបនៃការដាក់បញ្ចូលរមណីយដ្ឋានអង្គរ ទៅក្នុងបញ្ជីបេតិកភណ្ឌពិភពលោករបស់អង្គការយូណេស្កូ ដែលបង្ហាញពីភាពរុងរឿងនៃអតីតកាល។' },
+                { id: 'o17', idx: 35, code: 'misc', category: 'ស្នាដៃច្នៃប្រឌិតផ្សេងៗ', title: 'ពិធីបុណ្យវិសាខបូជា', file: 'វិសាខបូជា.jpg', isPlaceholder: false, desc: 'ការរចនាដើម្បីរំលឹកដល់ថ្ងៃព្រះពុទ្ធទ្រង់ប្រសូត ត្រាស់ដឹង និងបរិនិព្វាន។ ប្រើប្រាស់រូបភាពព្រះពុទ្ធបដិមា និងពណ៌បៃតងតំណាងឱ្យភាពត្រជាក់ត្រជំ។' }
+            ]
+        };
+
+        // UI active states
+        let activeTab = 'tab-months';
+        let currentActiveSlideIdx = 0;
+        let selectedItemToUploadId = null;
+
+        // COMBINED LIST FOR LIGHTBOX SLIDESHOW NAVIGATION
+        function getCombinedList() {
+            return [...portfolioData.months, ...portfolioData.food, ...portfolioData.misc];
+        }
+
+        // Trigger hidden file uploader
+        function triggerImageSwap(itemId) {
+            selectedItemToUploadId = itemId;
+            document.getElementById('image-upload-trigger').click();
+        }
+
+        // Handle selected image file and convert to DataURL (Base64) to show instantly
+        function handleImageSelection(event) {
+            const file = event.target.files[0];
+            if (!file) return;
+
+            const reader = new FileReader();
+            reader.onload = function(e) {
+                const base64Data = e.target.result;
+                
+                // Special handle for the Avatar uploader
+                if (selectedItemToUploadId === 'avatar-main') {
+                    const avatarDiv = document.getElementById('avatar-container');
+                    avatarDiv.innerHTML = `
+                        <img src="${base64Data}" class="w-full h-full object-cover" alt="Sivvoeuy Portrait">
+                        <div class="absolute bottom-1 bg-black/40 backdrop-blur-xs w-full py-0.5 text-center z-20">
+                            <span class="text-[8px] text-amber-200 uppercase font-inter tracking-wider font-bold">Chhoeun Sivvoeuy</span>
+                        </div>
+                        <button onclick="triggerImageSwap('avatar-main')" class="absolute inset-0 bg-black/60 opacity-0 hover:opacity-100 transition-opacity flex items-center justify-center z-30">
+                            <i class="fa-solid fa-camera text-cambodia-gold text-sm"></i>
+                        </button>
+                    `;
+                    showFloatingMessage("រូបថតគណនីបានផ្លាស់ប្ដូរ!", "រូបថតប្រវត្តិរូបសង្ខេបរបស់បង ត្រូវបានធ្វើបច្ចុប្បន្នភាពជោគជ័យបាទ។");
+                    return;
+                }
+
+                // Update in our portfolioData object
+                let found = false;
+                for (const cat in portfolioData) {
+                    const item = portfolioData[cat].find(i => i.id === selectedItemToUploadId);
+                    if (item) {
+                        item.file = base64Data;
+                        item.isPlaceholder = false; // remove placeholder status
+                        found = true;
+                        break;
+                    }
+                }
+
+                if (found) {
+                    // Re-render current page layouts
+                    renderAllGrids();
+                    
+                    // If lightbox is currently open, sync it
+                    const modal = document.getElementById('lightbox-modal');
+                    if (!modal.classList.contains('hidden')) {
+                        // find if currently active matches
+                        const combined = getCombinedList();
+                        if (combined[currentActiveSlideIdx].id === selectedItemToUploadId) {
+                            updateLightboxContent();
+                        }
+                    }
+                    showFloatingMessage("បានផ្លាស់ប្តូររូបភាពជោគជ័យ!", "រូបភាពថ្មីត្រូវបានបញ្ចូលទៅក្នុងប្លង់រចនារួចហើយបាទ។");
+                }
+            };
+            reader.readAsDataURL(file);
+        }
+
+        // Trigger upload from inside the zoomed lightbox
+        function triggerUploadFromLightbox() {
+            const combined = getCombinedList();
+            const currentItem = combined[currentActiveSlideIdx];
+            triggerImageSwap(currentItem.id);
+        }
+
+        // Render months and custom category cards beautifully
+        function renderAllGrids() {
+            // Render Tab 1 (Months)
+            const monthsGrid = document.getElementById('months-grid');
+            monthsGrid.innerHTML = '';
+            portfolioData.months.forEach(item => {
+                const card = createCardMarkup(item, 'Months Series');
+                monthsGrid.appendChild(card);
+            });
+
+            // Render Tab 2 (Food & Drinks)
+            const foodGrid = document.getElementById('food-grid');
+            foodGrid.innerHTML = '';
+            portfolioData.food.forEach(item => {
+                const card = createCardMarkup(item, 'Food & Drinks');
+                foodGrid.appendChild(card);
+            });
+
+            // Render Tab 3 (Misc)
+            const miscGrid = document.getElementById('misc-grid');
+            miscGrid.innerHTML = '';
+            portfolioData.misc.forEach(item => {
+                const card = createCardMarkup(item, 'Creative Ads');
+                miscGrid.appendChild(card);
+            });
+        }
+
+        // Helper to produce card elements dynamically
+        function createCardMarkup(item, categoryLabel) {
+            const div = document.createElement('div');
+            div.id = `card-${item.id}`;
+            div.className = `month-card-el premium-card bg-slate-950/80 border-2 border-slate-900 hover:border-cambodia-gold/40 p-4 rounded-2xl shadow-xl relative overflow-hidden group flex flex-col justify-between`;
+            div.setAttribute('data-month-code', item.code);
+
+            // Thumbnail display
+            let imgHTML = '';
+            if (item.isPlaceholder) {
+                // Return an elegant SVG vector placeholder
+                imgHTML = `
+                    <div class="aspect-[3/4] rounded-xl overflow-hidden bg-slate-900 border border-slate-800/80 flex flex-col justify-center items-center p-6 text-center text-slate-500 relative">
+                        <i class="fa-regular fa-image text-4xl mb-3 text-slate-700"></i>
+                        <span class="text-[10px] text-slate-400 font-bold mb-1 block">${item.title}</span>
+                        <span class="text-[9px] text-slate-600 block mb-3">ឯកសារ៖ ${item.file}</span>
+                        
+                        <button onclick="event.stopPropagation(); triggerImageSwap('${item.id}')" class="bg-cambodia-gold/10 hover:bg-cambodia-gold/20 text-cambodia-gold border border-cambodia-gold/30 rounded-xl py-1.5 px-3 text-[9px] font-bold flex items-center gap-1 transition-all active:scale-95">
+                            <i class="fa-solid fa-camera"></i> ជំនួសរូប Poster
+                        </button>
+                    </div>
+                `;
+            } else {
+                // Normal Image thumb with custom upload overlay button
+                imgHTML = `
+                    <div class="aspect-[3/4] rounded-xl overflow-hidden bg-slate-900 border border-slate-800 relative">
+                        <img src="${item.file}" alt="${item.title}" class="w-full h-full object-contain">
+                        
+                        <!-- Upload override on thumbnail corner -->
+                        <button onclick="event.stopPropagation(); triggerImageSwap('${item.id}')" class="absolute right-2 top-2 bg-slate-900/90 hover:bg-cambodia-gold text-slate-100 hover:text-cambodia-navy border border-slate-800 w-8 h-8 rounded-full flex items-center justify-center transition-all z-20 shadow-md" title="ជំនួសរូបថ្មី">
+                            <i class="fa-solid fa-camera text-xs"></i>
+                        </button>
+                    </div>
+                `;
+            }
+
+            // HTML content composition
+            div.innerHTML = `
+                <!-- Hover lightbox trigger overlay -->
+                <div class="absolute inset-0 bg-slate-950/80 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center z-10 cursor-pointer" onclick="openLightbox(${item.idx})">
+                    <div class="text-center space-y-2 p-4">
+                        <div class="w-10 h-10 rounded-full bg-cambodia-gold/20 flex items-center justify-center mx-auto text-cambodia-gold border border-cambodia-gold/45">
+                            <i class="fa-solid fa-expand text-base"></i>
+                        </div>
+                        <p class="text-[10px] font-bold text-cambodia-gold">ចុចពង្រីកមើលពិស្តារ</p>
+                    </div>
+                </div>
+
+                <div class="space-y-3">
+                    <!-- Top Index Tag -->
+                    <div class="flex items-center justify-between text-[10px]">
+                        <span class="px-2.5 py-0.5 bg-cambodia-gold/10 border border-cambodia-gold/25 text-cambodia-gold rounded-full font-bold">
+                            ${item.month || categoryLabel}
+                        </span>
+                        <span class="text-slate-500 font-mono">ID: ${item.id.toUpperCase()}</span>
+                    </div>
+
+                    ${imgHTML}
+
+                    <!-- Info Details -->
+                    <div class="space-y-1">
+                        <h4 class="font-bold text-slate-100 text-xs line-clamp-1 group-hover:text-cambodia-gold transition-colors">${item.title}</h4>
+                        <p class="text-[10px] text-slate-400 line-clamp-2 leading-relaxed">${item.desc}</p>
+                    </div>
+                </div>
+
+                <!-- Footer elements inside card -->
+                <div class="mt-3 pt-3 border-t border-slate-900 flex items-center justify-between text-[10px] text-slate-500">
+                    <span><i class="fa-solid fa-file-invoice mr-0.5 text-cambodia-gold/60"></i> ${item.file.length > 30 ? 'uploaded_user.jpg' : item.file}</span>
+                    <button onclick="openLightbox(${item.idx})" class="text-cambodia-gold hover:underline font-bold font-inter">លម្អិត <i class="fa-solid fa-angle-right"></i></button>
+                </div>
+            `;
+            return div;
+        }
+
+        // Filtering months in Tab 1
+        function filterMonths(filterVal) {
+            const cards = document.querySelectorAll('.month-card-el');
+            cards.forEach(card => {
+                const code = card.getAttribute('data-month-code');
+                if (filterVal === 'all' || code === filterVal) {
+                    card.style.display = 'flex';
+                } else {
+                    card.style.display = 'none';
+                }
+            });
+        }
+
+        // Tab Switcher between Months, Food & Drinks, and Misc
+        function switchTab(tabId) {
+            activeTab = tabId;
+            playClick();
+            
+            // Toggle Section Panels
+            document.querySelectorAll('.portfolio-tab').forEach(sec => {
+                sec.classList.add('hidden');
+            });
+            document.getElementById(tabId).classList.remove('hidden');
+
+            // Toggle Button Styles
+            document.querySelectorAll('.tab-btn').forEach(btn => {
+                btn.className = "tab-btn px-6 py-3.5 rounded-2xl font-bold text-xs tracking-wider uppercase transition-all flex items-center gap-2 bg-slate-900 hover:bg-slate-800 text-slate-300 border border-slate-800";
+            });
+
+            const activeBtn = document.getElementById(`btn-${tabId}`);
+            if (activeBtn) {
+                activeBtn.className = "tab-btn px-6 py-3.5 rounded-2xl font-bold text-xs tracking-wider uppercase transition-all flex items-center gap-2 bg-cambodia-gold text-cambodia-navy shadow-lg shadow-cambodia-gold/15";
+            }
+        }
+
+        // Custom Audio synthesizer using Web Audio API for Khmer-like bell ring
+        let audioCtx = null;
+        function initAudio() {
+            if (!audioCtx) {
+                audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+            }
+        }
+
+        function playBellSound() {
+            initAudio();
+            if (!audioCtx) return;
+            
+            try {
+                const osc = audioCtx.createOscillator();
+                const gain = audioCtx.createGain();
+                
+                osc.type = 'triangle';
+                osc.frequency.setValueAtTime(880, audioCtx.currentTime); // High pitch A5
+                osc.frequency.exponentialRampToValueAtTime(1200, audioCtx.currentTime + 0.05);
+                osc.frequency.exponentialRampToValueAtTime(880, audioCtx.currentTime + 0.15);
+                
+                gain.gain.setValueAtTime(0.3, audioCtx.currentTime);
+                gain.gain.exponentialRampToValueAtTime(0.01, audioCtx.currentTime + 1.2);
+                
+                osc.connect(gain);
+                gain.connect(audioCtx.destination);
+                
+                osc.start();
+                osc.stop(audioCtx.currentTime + 1.2);
+            } catch (err) {
+                console.log("Audio not allowed yet.");
+            }
+        }
+
+        function playClick() {
+            initAudio();
+            if (!audioCtx) return;
+            try {
+                const osc = audioCtx.createOscillator();
+                const gain = audioCtx.createGain();
+                osc.type = 'sine';
+                osc.frequency.setValueAtTime(600, audioCtx.currentTime);
+                osc.frequency.exponentialRampToValueAtTime(200, audioCtx.currentTime + 0.08);
+                gain.gain.setValueAtTime(0.15, audioCtx.currentTime);
+                gain.gain.exponentialRampToValueAtTime(0.01, audioCtx.currentTime + 0.08);
+                osc.connect(gain);
+                gain.connect(audioCtx.destination);
+                osc.start();
+                osc.stop(audioCtx.currentTime + 0.08);
+            } catch(e){}
+        }
+
+        // Lightbox Functions
+        function openLightbox(combinedIdx) {
+            playBellSound();
+            currentActiveSlideIdx = combinedIdx;
+            updateLightboxContent();
+
+            const modal = document.getElementById('lightbox-modal');
+            modal.classList.remove('hidden');
+            setTimeout(() => {
+                modal.classList.remove('opacity-0');
+            }, 50);
+        }
+
+        function closeLightbox() {
+            playClick();
+            const modal = document.getElementById('lightbox-modal');
+            modal.classList.add('opacity-0');
+            setTimeout(() => {
+                modal.classList.add('hidden');
+            }, 300);
+        }
+
+        function updateLightboxContent() {
+            const combined = getCombinedList();
+            const slide = combined[currentActiveSlideIdx];
+            
+            const img = document.getElementById('lightbox-img');
+            const title = document.getElementById('lightbox-title');
+            const category = document.getElementById('lightbox-category');
+            const filename = document.getElementById('lightbox-filename');
+            const desc = document.getElementById('lightbox-desc');
+            const placeholderAlert = document.getElementById('lightbox-placeholder-alert');
+
+            if (slide.isPlaceholder) {
+                img.src = `https://placehold.co/600x800/0a1931/dfb15b?text=${slide.title.replace(/ /g, '+')}`;
+                placeholderAlert.classList.remove('hidden');
+            } else {
+                img.src = slide.file;
+                placeholderAlert.classList.add('hidden');
+            }
+
+            title.innerText = slide.title;
+            category.innerText = slide.month || slide.category || 'ស្នាដៃក្រាហ្វិក';
+            filename.innerText = slide.file.length > 50 ? 'រូបភាពផ្ទាល់ខ្លួន (User_Image.jpg)' : slide.file;
+            desc.innerText = slide.desc;
+        }
+
+        function slidePrev() {
+            playClick();
+            const combined = getCombinedList();
+            currentActiveSlideIdx--;
+            if (currentActiveSlideIdx < 0) {
+                currentActiveSlideIdx = combined.length - 1;
+            }
+            updateLightboxContent();
+        }
+
+        function slideNext() {
+            playClick();
+            const combined = getCombinedList();
+            currentActiveSlideIdx++;
+            if (currentActiveSlideIdx >= combined.length) {
+                currentActiveSlideIdx = 0;
+            }
+            updateLightboxContent();
+        }
+
+        // Keyboard Support for Slide Zoom
+        document.addEventListener('keydown', function(e) {
+            const modal = document.getElementById('lightbox-modal');
+            if (!modal.classList.contains('hidden')) {
+                if (e.key === 'ArrowLeft') slidePrev();
+                else if (e.key === 'ArrowRight') slideNext();
+                else if (e.key === 'Escape') closeLightbox();
+            }
+        });
+
+        // Toast message utility
+        function showFloatingMessage(title, body) {
+            const msgBox = document.createElement('div');
+            msgBox.className = "fixed bottom-5 right-5 z-50 glass-panel border border-cambodia-gold bg-slate-950/95 p-5 rounded-2xl shadow-2xl flex items-center gap-3 animate-bounce";
+            msgBox.innerHTML = `
+                <div class="w-8 h-8 rounded-full bg-cambodia-gold/20 text-cambodia-gold flex items-center justify-center shrink-0">
+                    <i class="fa-solid fa-circle-check"></i>
+                </div>
+                <div>
+                    <h5 class="text-xs font-bold text-slate-100">${title}</h5>
+                    <p class="text-[10px] text-slate-400">${body}</p>
+                </div>
+            `;
+            document.body.appendChild(msgBox);
+            setTimeout(() => { msgBox.remove(); }, 4000);
+        }
+
+        // Contact submission mock
+        function handleContactSubmit(event) {
+            event.preventDefault();
+            playBellSound();
+            showFloatingMessage("ផ្ញើសារបានជោគជ័យ!", "ខ្ញុំបាទ ឈឿន ស៊ីវវើយ នឹងទាក់ទងទៅបងវិញតាមតេឡេក្រាមឱ្យបានឆាប់បំផុតបាទ!");
+            event.target.reset();
+        }
+
+        // Export customized HTML containing any in-memory swapped base64 image data
+        function exportCustomizedHTML() {
+            playBellSound();
+            // Re-inject updated database directly into code to make persistence real
+            let docString = document.documentElement.outerHTML;
+
+            // Generate self-contained Blob for client downloading
+            const blob = new Blob([docString], { type: 'text/html' });
+            const link = document.createElement('a');
+            link.href = URL.createObjectURL(blob);
+            link.download = 'Chhoeun_Sivvoeuy_Portfolio.html';
+            link.click();
+            showFloatingMessage("រក្សាទុកឯកសារជោគជ័យ!", "ឯកសារ HTML ថ្មីដែលបានកែប្រែរូបភាពរួចរាល់ ត្រូវបានទាញយកបាទ។");
+        }
+
+        // Initialize lists on document load
+        window.onload = function() {
+            renderAllGrids();
+        }
+    </script>
+</body>
+</html>
